@@ -75,7 +75,7 @@ function getSum(total, num){
     return total+num;
 }
 
-//initial value : 5
+//initial value : 1
 let total1=  numbers.reduce(getSum);
 console.log(total1);
 
@@ -129,4 +129,129 @@ const animalData = [
 console.log(animalData);
 console.table(animalData);
 
-//
+//Simpe constructor with method property
+
+function Dog(name,age){
+    this.name = name;
+    this.age = age;
+    this.toString = function(){return "<"+this.name+","+this.age+">";};
+}
+
+{
+    console.log(Dog.toString);
+
+    let luch = new Dog("Luch", 6);
+    const sam = new Dog("Sam",15);
+
+    console.log(luch);
+    console.log(luch.toString());
+    console.log(sam);
+    console.log(sam.toString());
+}
+
+JSON.stringify(animalData);
+
+
+//** Arrow and Anonymous function **//
+
+// function name (parameters){
+//  statments   
+// }
+
+// function double (num){
+//     return num * 2;
+// }
+
+//Anonymous function
+
+// const name = function(parameters){
+//     statments
+// }
+
+// const double = function(parameters){
+//     statments
+// }
+
+//Arrow function
+// const name = (parameters) => expression
+
+// const double = (num) => num*2;
+
+//if you have only one parameter, you can skip the parentheses as well
+// const double = num => num * 2;
+
+//map - apply the specified function to each element of the array
+const array1 = [1,2,3,4,5,6,7,8,9];
+const map1 = array1.map(x=>x*2);
+console.log(map1);
+
+//reduce - use a specified function to accumulate the elements across the array
+
+const array2 = [1,2,3,4];
+const reducer = (accumlater, currentValue) => accumlater+currentValue;
+
+//1+2+3+4
+console.log(array2.reduce(reducer));
+
+//5+1+2+3+4
+console.log(array2.reduce(reducer,5));
+
+//filter - use a apecified function to filter the array
+const words = ['spray','limit','elite','exuberant','destruction','present'];
+
+const result = words.filter(word => word.length > 6);
+
+console.log(result);
+
+//const - not real constants
+
+// you can create a constant array:
+const animals2 = ["Lion","Tiger","Giraffe"];
+console.log(animals2);
+
+//you can change an element of a const array:
+animals2[0] = "Elephant";
+console.log(animals2);
+
+
+//you can add an element to a const array:
+animals2.push("Monkey");
+console.log(animals2);
+
+//but you cant not reassign a constant array:
+// animals2 = ["Monkey","Lemur","Rhinoceros"];
+
+//you can create a const object:
+const myDog = {name:'Momo', breed: 'Shitsu', colot:'white'};
+console.log(myDog);
+
+//you can change a property:
+myDog.colot = "brown";
+console.log(myDog);
+
+myDog.age = 6;
+console.log(myDog);
+
+//Error. you cna not reassign a constat objec:
+// myDog={name:'Luch', breed:'Poodel'};
+
+//Factorial
+function factorial(n){
+    if(n<0){
+        throw "Number must be non-negative";
+    }
+
+    var result = 1;
+    while(n>1){
+        result *= n;
+        n--;
+    }
+    return result;
+}
+console.log(factorial(5));
+
+let factorial2 = n => (n<2) ? 1 : n* factorial2(n-1);
+console.log(factorial2(5));
+
+
+
