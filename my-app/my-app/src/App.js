@@ -116,6 +116,10 @@ function App() {
   if(loading){
     return <p>Loading...</p>
   }
+
+  if(error){
+    return <p>Something failed</p>
+  }
   // using hook
   // const [count, setCount] = useState(0);
   // const increment = ()=>{
