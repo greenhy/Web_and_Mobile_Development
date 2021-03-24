@@ -1,6 +1,7 @@
 import logo from './qut-logo-large.jpg';
 import './App.css';
 import React, {useState} from 'react';
+import {useNewArticles} from './api';
 
 //basic animals array
 const animals=[
@@ -103,12 +104,18 @@ const AnimalComponet = ({name, number, eats}) =>
 
 
 function App() {
+  const {loading, headlines, error} = useNewArticles();
   const headLines = [
-    'first',
-    'second',
-    'third',
-    'fourth',
+    {title:'first', url:"url"},
+      {title:'second', url:"url1"},
+      {title:'third', url:"url2"},
+      {title:'fourth', url:"url3"}
+    
   ];
+
+  if(loading){
+    return <p>Loading...</p>
+  }
   // using hook
   // const [count, setCount] = useState(0);
   // const increment = ()=>{
@@ -151,7 +158,7 @@ function App() {
       <HeadDline title="Banana"/>
       <HeadDline title="Apple"/> */}
 
-      {headLines.map((headline)=><HeadDline title={headline}></HeadDline>)}
+      {headLines.map((headline)=><HeadDline title={headline.title} />)}
     </div>
   );
 }
