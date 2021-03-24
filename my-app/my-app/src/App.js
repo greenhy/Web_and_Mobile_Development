@@ -103,6 +103,12 @@ const AnimalComponet = ({name, number, eats}) =>
 
 
 function App() {
+  const headLines = [
+    'first',
+    'second',
+    'third',
+    'fourth',
+  ];
   // using hook
   // const [count, setCount] = useState(0);
   // const increment = ()=>{
@@ -141,9 +147,11 @@ function App() {
       <button onClick ={increment}>Like</button>
       <button onClick ={decrement}>Dislike</button> */}
       {/* <LikeCounter/> */}
-      <HeadDline title="Carrot"/>
+      {/* <HeadDline title="Carrot"/>
       <HeadDline title="Banana"/>
-      <HeadDline title="Apple"/>
+      <HeadDline title="Apple"/> */}
+
+      {headLines.map((headline)=><HeadDline title={headline}></HeadDline>)}
     </div>
   );
 }
