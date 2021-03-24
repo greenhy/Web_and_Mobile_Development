@@ -7,7 +7,7 @@ export function useNewArticles(){
     // const [error, setError] = useState(null);
 
     useEffect(()=>{
-        async()=>{
+        (async()=>{
        try { 
         setHeadlines(await getHeadlines());
         setLoading(false);
@@ -19,7 +19,7 @@ export function useNewArticles(){
         // setTimeout(()=>{
             // setLoading(false);
         // },2000);
-    }
+    })();
     }, []);
     const headLines = [
         {title:'first', url:"url"},
