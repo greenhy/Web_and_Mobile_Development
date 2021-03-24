@@ -106,11 +106,10 @@ const AnimalComponet = ({name, number, eats}) =>
 function App() {
   const {loading, headlines, error} = useNewArticles();
   const headLines = [
-    {title:'first', url:"url"},
-      {title:'second', url:"url1"},
-      {title:'third', url:"url2"},
-      {title:'fourth', url:"url3"}
-    
+    { title: 'My First Title', url: 'https://news.com/first-title' }, 
+    { title: 'My Second Title', url: 'https://news.com/second-title' }, 
+    { title: 'My Third Title', url: 'https://news.com/third-title' }, 
+    { title: 'My Fourth Title', url: 'https://news.com/fourth-title' },
   ];
 
   if(loading){
@@ -162,7 +161,9 @@ function App() {
       <HeadDline title="Banana"/>
       <HeadDline title="Apple"/> */}
 
-      {headLines.map((headline)=><HeadDline title={headline.title} />)}
+      {/* {headLines.map((headline)=><HeadDline title={headline.title} />)} */}
+      {headlines.map((headline) => ( // `headline` is now an object 
+      <HeadDline key={headline.url} title={headline.title} /> ))}
     </div>
   );
 }
