@@ -1,5 +1,6 @@
 import logo from './qut-logo-large.jpg';
 import './App.css';
+import React, {useState} from 'react';
 
 //basic animals array
 const animals=[
@@ -102,10 +103,21 @@ const AnimalComponet = ({name, number, eats}) =>
 
 
 function App() {
+  // using hook
+  const [count, setCount] = useState(0);
+  const increment = ()=>{
+    setCount((oldCount)=> oldCount+1);
+  }
+
+  const decrement = ()=>{
+    setCount((oldCount)=> oldCount-1);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+      {/* simple function and class */}
+      {/* <header className="App-header">
+        {/* <img src={logo} className="App-logo" alt="logo" /> }
         <h1>QUT Zoo</h1>
         <p>
           {
@@ -121,7 +133,13 @@ function App() {
           rel="noopener noreferrer"
         >
         </a>
-      </header>
+      </header> */}
+
+      {/* Hook example */}
+      <h1>Like Counter</h1>
+      <p>Overall Count: {count} </p>
+      <button onClick ={increment}>Like</button>
+      <button onClick ={decrement}>Dislike</button>
     </div>
   );
 }
