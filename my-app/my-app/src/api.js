@@ -7,6 +7,7 @@ export function useNewArticles(){
     // const [error, setError] = useState(null);
 
     useEffect(()=>{
+        getHeadlines();
         setTimeout(()=>{
             setLoading(false);
         },2000);
@@ -31,4 +32,6 @@ async function getHeadlines(){
     // fetch => async
     let res = await fetch(url);
     let data = await res.json();
+
+    console.log(data);
 }
