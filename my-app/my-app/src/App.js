@@ -2,37 +2,52 @@ import logo from './qut-logo-large.jpg';
 import './App.css';
 import React, {useState} from 'react';
 import {useNewArticles} from './api';
+import Select from 'react-select';
+import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
+import Home from "./pages/home";
+import Study from "./pages/study";
+import About from "./pages/about";
 
-import {Headline} from "./components/headline.js"
-import {SearchBar} from "./components/searchBar.js"
+const activeStyle = {
+  fontWeight: "bold",
+  color:"red",
+}
 
 function App() {
-  const [search, setSearch] = useState("");
-  const {loading, headlines, error} = useNewArticles(search);
-  
+  return(
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <NavLink exact to="/" activeStyle={activeStyle}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink exact to="/about" activeStyle={activeStyle}>
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink exact to="/study" activeStyle={activeStyle}>
+              Study
+            </NavLink>
+          </li>
+        </ul>
 
-  const headLines = [
-    { title: 'My First Title', url: 'https://news.com/first-title' }, 
-    { title: 'My Second Title', url: 'https://news.com/second-title' }, 
-    { title: 'My Third Title', url: 'https://news.com/third-title' }, 
-    { title: 'My Fourth Title', url: 'https://news.com/fourth-title' },
-  ];
-
-  if(loading){
-    return <p>Loading...</p>
-  }
-
-  if(error){
-    return <p>Something failed</p>
-  }
-  
-  return (
-    <div className="App">
-      <h1>Search</h1>
-      <SearchBar onSubmit={setSearch}/>
-      {headlines.map((headline) => ( // `headline` is now an object 
-      <Headline key={headline.url} title={headline.title} /> ))}
-    </div>
+        <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route exact path="/about">
+          <About/>
+          </Route>
+          <Route exact path="/study">
+          <Study/>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

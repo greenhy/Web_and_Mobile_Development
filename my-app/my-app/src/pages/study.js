@@ -30,7 +30,7 @@ export default function Study(){
 
     useEffect(()=>{
      (   async()=>{
-        let res = await fetch("https://openlibrary.org/subjects/drama.jason?pulished_in=2000")
+        let res = await fetch("http://openlibrary.org/subjects/drama.json?published_in=2000")
         let data = await res.json();
         
         let works = data.works;
@@ -88,7 +88,7 @@ export default function Study(){
             color="info"
             size="sm"
             className="mt-3"
-            href="https://openlibraya.org/develops/api"
+            href="https://openlibrary.org/develops/api"
        >
            Go to Open Library Api
        </Button>
