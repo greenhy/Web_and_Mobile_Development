@@ -1,20 +1,20 @@
 import {useEffect} from 'react';
 import React, {useState} from 'react';
 
-export function useNewArticles(){
+export function useNewArticles(search){
     const [loading, setLoading] = useState(true);
     const [headlines, setHeadlines] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => { (async () => {
          try { 
-             setHeadlines(await getHeadlines());
+             setHeadlines(await getHeadlines(search));
               setLoading(false); 
             } catch (err) {
                  setError(error); 
                  setLoading(false); 
                 } })(); 
-            }, []);
+            }, [search]);
     // useEffect(()=>{
     //     (async()=>{
     //    try { 
@@ -45,8 +45,8 @@ export function useNewArticles(){
 }
 
 const API_KEY = "";
-async function getHeadlines(){
-    const url=`https://newsapi.org/v2/top-headlines?country=au&apiKey=${API_KEY}`;
+async function getHeadlines(search){
+    const url=`https://newsapi.org/v2/top-headlines?country=au&apiKey=${API_KEY}&q=${search}`;
     // fetch => async
     let res = await fetch(url);
     let data = await res.json();
