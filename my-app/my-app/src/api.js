@@ -44,7 +44,7 @@ export function useNewArticles(search){
     };
 }
 
-const API_KEY = "";
+const API_KEY = "3d6e5e74eaa04fc9a7ba57041b5611ea";
 async function getHeadlines(search){
     const url=`https://newsapi.org/v2/top-headlines?country=au&apiKey=${API_KEY}&q=${search}`;
     // fetch => async
