@@ -5,22 +5,23 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import {useSymbolList} from "../api/finhubAPI"
-// import { useSymbolData } from "../api/alphavantageAPI";
+import { useSymbolData } from "../api/alphavantageAPI";
 
 
 
 export default function StockTable() {
     const API_KEY = "WN72VM8HP9TZ85YQ";
-    const [rowData, setRowData] = useState([]);
+    // const [rowData, setRowData] = useState([]);
     const columns = [
         { hearderName: "Symbol", field: "symbol" },
-        // { hearderName: "Name", field: "name" },
-        // { hearderName: "Industry", field: "industry" },
+        { hearderName: "Name", field: "name" },
+        { hearderName: "Industry", field: "industry" },
     ];
 
-    const symbol = useSymbolList().symbols;
+    // const symbol = useSymbolList().symbols;
     // console.log(symbol);
-    // const symbolData = useSymbolData.symboldata;
+    const stocks = useSymbolData();
+    console.log(stocks);
 
     return (
         <div className="container">
@@ -30,7 +31,7 @@ export default function StockTable() {
                 width: "600px",
             }}>
 
-                <AgGridReact columnDefs={columns} rowData={symbol} pagination={true}/>
+                <AgGridReact columnDefs={columns} rowData={stocks} pagination={true}/>
             </div>
 
         </div>);

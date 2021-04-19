@@ -31,13 +31,8 @@ async function getSymbol() {
     // fetch => async
     let res = await fetch(url);
     let data = await res.json();
-    let five_data=[];
-
-    for(let i =0; i<5; i++){
-        five_data.push(data[i]);
-    };
-
-    return five_data.map((stock) => ({
+    // console.log(data);
+    return data.map((stock) => ({
         symbol: stock.symbol,
     }));
 
