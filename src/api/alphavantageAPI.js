@@ -1,14 +1,15 @@
 import {useEffect} from 'react';
 import React, {useState} from 'react';
+import {useSymbolList} from './finhubAPI';
 
-export function useStockData(){
+export function useSymbolData(){
     const [loading, setLoading] = useState(true);
-    const [headlines, setSymbol] = useState([]);
+    const [symboldata, setSymbolData] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => { (async () => {
          try { 
-             setSymbol(await getSymbol());
+             setSymbolData(await getSymbolData());
               setLoading(false); 
             } catch (err) {
                  setError(error); 
@@ -16,29 +17,31 @@ export function useStockData(){
                 } })(); 
             }, []);
 
-    const headLines = [
-        { title: 'My First Title', url: 'https://news.com/first-title' }, 
-        { title: 'My Second Title', url: 'https://news.com/second-title' }, 
-        { title: 'My Third Title', url: 'https://news.com/third-title' }, 
-        { title: 'My Fourth Title', url: 'https://news.com/fourth-title' },
-      ];
+   
 
     return {
         loading,
-        headlines,
+        symboldata,
         error : null
     };
 }
 
+
 const API_KEY = "WN72VM8HP9TZ85YQ";
-async function getSymbol(){
-    const url=`https://www.alphavantage.co/support/#${API_KEY}`;
+const symbols = useSymbolList.symbols;
+console.log(symbols);
+symbols.map((symbol) => getSymbolData(symbol));
+
+async function getSymbolData(props){
+    const url=`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${props.symbol}&apikey${API_KEY}`;
     // fetch => async
     let res = await fetch(url);
     let data = await res.json();
-
+    if(data.Symbol === props.symbol){
+        console.log(data);
+    }
     // let symbol = data.Symbol;
-    console.log(data);
+    // console.log(data);
     // console.log(symbol);
 
     // return symbols.map((symbol) => ({
