@@ -42,6 +42,7 @@ async function getSymbolData(props){
 
         if ((typeof symbol !== 'undefined') && (typeof data.Symbol !== 'undefined')) {
             stockList.push(data);
+            console.log(symbol);
           }
         
 

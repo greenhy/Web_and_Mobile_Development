@@ -20,7 +20,7 @@ export default function StockTable() {
 
     // const symbol = useSymbolList().symbols;
     // console.log(symbol);
-    const stocks = useSymbolData();
+    const stocks = useSymbolData().symboldata;
     console.log(stocks);
 
     return (
