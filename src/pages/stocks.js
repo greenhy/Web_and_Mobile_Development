@@ -7,7 +7,7 @@ import StockTable from "../components/stockTable";
 export default function Stocks() {
     return (
         <Container>
-            <Row>
+            {/* <Row>
                 <Col>
                     <p>Select Stock
                         <SearchBar/>
@@ -18,7 +18,7 @@ export default function Stocks() {
                         <SearchBar />
                     </p>
                 </Col>
-            </Row>
+            </Row> */}
             <StockTable/>
         </Container>
 

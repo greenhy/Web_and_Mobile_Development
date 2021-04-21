@@ -3,14 +3,27 @@ import React, {useState} from 'react';
 import {useSymbolList} from './finhubAPI';
 
 export function useSymbolData(){
+    console.log("in API");
     const [loading, setLoading] = useState(true);
-    const [symboldata, setSymbolData] = useState([]);
+    const [stocksAll, setSymbolData] = useState([]);
     const [error, setError] = useState(null);
-    const symbols = useSymbolList().symbols;
+    // const symbols = useSymbolList().symbols;
+    const symbols = [{symbol: 'ACCO'},{symbol: 'ALC'},{symbol: 'NBR'},{symbol: 'SSD'},{symbol: 'YRD'}]
     // console.log(symbols); 
     useEffect(() => { (async () => {
+       
          try { 
-             setSymbolData(await getSymbolData(symbols));
+             console.log("in alphavantage");
+            //  if(typeof search ==="undefined" || stocks.length == 0){
+                // console.log("in alphavantage if");
+                setSymbolData(await getSymbolData(symbols));
+                // console.log(symbols); 
+            //  }
+            //  else{
+                // console.log("in alphavantage else");
+                //  console.log(search);
+            //  }
+             
               setLoading(false); 
             } catch (err) {
                  setError(error); 
@@ -19,7 +32,7 @@ export function useSymbolData(){
             }, []);
     return {
         loading,
-        symboldata,
+        stocksAll,
         error : null
     };
 }
@@ -36,7 +49,7 @@ async function getSymbolData(props){
         
         let symbol = props[i].symbol ;
         const url=`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${API_KEY}`;
-       
+        console.log(url);
         let res = await fetch(url);
         let data = await res.json();
 
@@ -53,19 +66,6 @@ async function getSymbolData(props){
             continue;
         }
     };
-    // for(let i = 0 ; i<props.length;i++){
-       
-    // }
-    // const url=`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${props.symbol}&apikey${API_KEY}`;
-    // // fetch => async
-    // let res = await fetch(url);
-    // let data = await res.json();
-    // if(data.Symbol === props.symbol){
-    //     console.log(data);
-    // }
-    // let symbol = data.Symbol;
-    // console.log(data);
-    // console.log(symbol);
 
     return stockList.map((stock) => ({
         // error function
@@ -73,7 +73,5 @@ async function getSymbolData(props){
         name : stock.Name,
         industry: stock.Industry,
     }));
-   
-    // return 'data';
-    
+
 }

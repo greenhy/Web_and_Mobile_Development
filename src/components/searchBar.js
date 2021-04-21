@@ -1,23 +1,38 @@
-import React, {useState} from "react";
-
-export default function SearchBar(props){
+import React, { useState } from "react";
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+export default function SearchBar(props) {
+    console.log(props);
     const [innerSearch, setInnerSearch] = useState("");
     return (
-        <div>
-            <input
-                name="search"
-                type="search"
-                id="search"
-                value={innerSearch}
-                onChange={(event)=>{
-                    setInnerSearch(event.target.value);
-                }}
-            />
-            <button id = "button" type="button" onClick={()=>{
-                props.onSubmit(innerSearch);
-            }}>
-                Search
-            </button>
-        </div>
+
+        <DropdownButton
+            id="dropdown-basic-button"
+            title={innerSearch}
+        >
+            {props.contents === "symbol" ?
+                props.stock.map((stock) => (
+                    <Dropdown.Item
+                        eventKey={stock.symbol}
+                        onSelect={(event) => {
+                            setInnerSearch(event);
+                            props.onSubmit(event);
+                        }}>
+                        {stock.symbol}
+                    </Dropdown.Item>)) :
+                props.stock.map((stock) => (
+                    <Dropdown.Item
+                        eventKey={stock.industry}
+                        onSelect={(event) => {
+                            setInnerSearch(event);
+                            props.onSubmit(event);
+                        }}>
+                        {stock.industry}
+                    </Dropdown.Item>))
+            }
+
+        </DropdownButton>
+
     );
 }
+

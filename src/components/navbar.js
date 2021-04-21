@@ -5,7 +5,6 @@ import Stocks from "../pages/stocks";
 import Quote from "../pages/quote";
 import History from "../pages/history";
 import Home from "../pages/home";
-import Registration from "../pages/registration"
 import { Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -38,9 +37,7 @@ export default function NavbarCus() {
                         <Nav.Link as={Link} to="/history">
                             History
                                 </Nav.Link>
-                        <Nav.Link as={Link} to="/registration">
-                            Registration|Sign up
-                                </Nav.Link>
+                   
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
