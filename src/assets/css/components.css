@@ -1,0 +1,30 @@
+.row-margin {
+    margin-top: 20px;
+    margin-left: 15%;
+  }
+
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+    margin-left: 50%;
+    align-items: center;
+    background-color: white;
+  }
+
+.div-margin{
+    margin-right: 20px;
+    font-size: 1.5em;
+}
+
+.ag-theme-balham{
+    height: 350px;
+    margin-top: 20px;
+}
+
+.mr-auto{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+  

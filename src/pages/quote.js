@@ -1,29 +1,14 @@
-import React from "react";
-import SearchBar from "../components/searchBar";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import StockTable from "../components/stockTable";
+import QuoteTable from "../components/quoteTable";
 
-export default function Quote() {
+
+export default function Quote(props) {
+
     return (
         <Container>
-            <Row>
-                <Col>
-                    Select Stock
-                        <SearchBar/>
-                    
-                </Col>
-                <Col>
-                    Select Industry
-                        <SearchBar />
-                   
-                </Col>
-            </Row>
-            <StockTable/>
+           <QuoteTable stocksAll={props.stocksAll}/>
         </Container>
 
-        
-
-        
     );
 }

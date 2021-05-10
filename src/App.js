@@ -1,14 +1,10 @@
-// import logo from './qut-logo-large.jpg';
-import './App.css';
-import React, {useState} from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBarCus from "./components/navbar";
+import './App.css';
 
 function App() {
-  return(
-          <NavBarCus/>
-
+  return (
+    <NavBarCus/>
   );
 }
 
