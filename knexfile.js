@@ -5,5 +5,6 @@ module.exports={
     user:"hayoung",
     password:"1!rktldus",
     database:"world",
+    
     }
 }
